@@ -13,3 +13,10 @@ Please run `pip install -r requirements.txt` to install necessary packages
 2. In another terminal you can run `python inference.py` to test inferences
 
 The endpoint is expecting the data to be formatted as a list of JSON objects.
+
+The endpoint is located at `http://127.0.0.1:8000:predict/{model}`
+The two possible values for model are:
+1. linear
+2. rf
+
+Each loads loads up a different model to be used for inference.
