@@ -2,4 +2,5 @@ scikit-learn
 fastapi
 seaborn
 fastapi[all]
+uvicorn[standard]
 pydantic

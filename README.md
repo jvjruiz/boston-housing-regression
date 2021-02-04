@@ -10,4 +10,4 @@ Please run `pip install -r requirements.txt` to install necessary packages
 
 ## Instructions for running api
 1. Run the command `uvicorn main:app --reload` to run server
-2. In another terminal you can run `python main.py` to test inferences
+2. In another terminal you can run `python inference.py` to test inferences

@@ -28,14 +28,20 @@ async def create_item(stats: Request, model):
     if model.lower() != 'linear' and model.lower() != 'rf':
         # return message if no model is selected
         message = 'Please provide model type in URL'
-        return jsonable_encoder({'message': message})
+        return jsonable_encoder({'message': message, 'predictions':[]})
     elif model.lower() == 'linear':
         model = load('./models/linear_model.joblib')
     elif model.lower() == 'rf':
         model = load('./models/random_forest.joblib')
 
     # make predictions
-    preds = model.predict(df).tolist()
+    try:
+        preds = model.predict(df).tolist()
+    except:
+        message = 'Something went wrong, please ensure data is in correct format.'
+        return jsonable_encoder({'message': message, 'predictions': []})
+
+
     for i in range(0, len(preds)):
         predictions.append([indices[i],preds[i]])
     message = 'Predictions successfully completed, {} rows were filtered out for having null values'.format(total_records_sent - len(predictions))
